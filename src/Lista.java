@@ -117,4 +117,26 @@ public class Lista {
             atual = atual.getProximo();
         }
     }
+    public void bubble_sort() {
+        No atual, auxFim = fim;
+        int aux;
+        boolean troca = true;
+
+        while (auxFim != inicio.getProximo() && troca) {
+            troca = false;
+            atual = inicio;
+
+            while (atual != auxFim) {
+                if (atual.getInfo() > atual.getProximo().getInfo()) {
+                    troca = true;
+                    aux = atual.getInfo();
+                    atual.setInfo(atual.getProximo().getInfo());
+                    atual.getProximo().setInfo(aux);
+                }
+
+                atual = atual.getProximo();
+            }
+            auxFim = auxFim.getAnterior();
+        }
+    }
 }

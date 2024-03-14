@@ -11,7 +11,7 @@ public class Main {
 
         lista.exibir();
 
-        lista.selection_sort();
+        lista.bubble_sort();
 
        lista.exibir();
     }
