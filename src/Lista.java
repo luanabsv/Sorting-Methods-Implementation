@@ -24,7 +24,7 @@ public class Lista {
     }
 
     public void inserirFinal(int info) {
-        No novo = new No(fim, null, info);
+        No novo = new No(null, fim, info);
 
         if (fim == null)
             inicio = fim = novo;
@@ -38,9 +38,11 @@ public class Lista {
         No atual = inicio;
 
         while (atual != null) {
-            System.out.println("| " + atual.getInfo() + " |");
+            System.out.print("| " + atual.getInfo() + " |");
             atual = atual.getProximo();
         }
+
+        System.out.println("\n-------------------------------\n");
     }
 
     public No buscaExaustiva(int info) {
@@ -83,12 +85,35 @@ public class Lista {
             pos = atual;
             aux = atual.getInfo();
 
-            while(pos != inicio && atual.getAnterior().getInfo() > aux) {
-                atual.setInfo(atual.getAnterior().getInfo());
+            while(pos != inicio && pos.getAnterior().getInfo() > aux) {
+                pos.setInfo(pos.getAnterior().getInfo());
                 pos = pos.getAnterior();
             }
 
             pos.setInfo(aux);
+            atual = atual.getProximo();
+        }
+    }
+
+    public void selection_sort () {
+        No atual = inicio, j, menorNo;
+        int aux;
+
+        while (atual.getProximo() != null) {
+            menorNo = atual;
+            j = atual;
+
+            while (j != null ) {
+                if (j.getInfo() < menorNo.getInfo())
+                    menorNo = j;
+
+                j = j.getProximo();
+            }
+
+            aux = atual.getInfo();
+            atual.setInfo(menorNo.getInfo());
+            menorNo.setInfo(aux);
+
             atual = atual.getProximo();
         }
     }
