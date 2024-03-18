@@ -2,6 +2,8 @@ public class Lista {
     private No inicio;
     private  No fim;
 
+    private int tl = 0;
+
     public Lista(No inicio, No fim) {
         this.inicio = inicio;
         this.fim = fim;
@@ -23,6 +25,14 @@ public class Lista {
         this.fim = fim;
     }
 
+    public int getTl() {
+        return tl;
+    }
+
+    public void setTl(int tl) {
+        this.tl = tl;
+    }
+
     public void inserirFinal(int info) {
         No novo = new No(null, fim, info);
 
@@ -32,6 +42,7 @@ public class Lista {
             fim.setProximo(novo);
             fim = novo;
         }
+        tl++;
     }
 
     public void exibir() {
@@ -138,5 +149,54 @@ public class Lista {
             }
             auxFim = auxFim.getAnterior();
         }
+    }
+
+    public No returnNoPos(int pos) {
+        No atual = inicio;
+        int i = 0;
+
+        while(atual != null && i < pos) {
+            i++;
+            atual = atual.getProximo();
+        }
+
+        return atual;
+    }
+
+    public void heap_soart() {
+        No auxFim, fe, fd, maiorF, pai;
+        int posPai, posFe, aux, tl2 = tl;
+
+        while(tl2 > 1) {
+            posPai = tl2 / 2 - 1;
+
+            while (posPai >= 0) {
+                pai = returnNoPos(posPai);
+
+                posFe = 2 * posPai + 1;
+                fe = returnNoPos(posFe);
+                fd = returnNoPos(posFe + 1);
+
+                maiorF = fe;
+                if (posFe + 1 < tl2 &&  fd.getInfo() > fe.getInfo()) {
+                    maiorF = fd;
+                }
+
+                if (maiorF.getInfo() > pai.getInfo()) {
+                    aux = pai.getInfo();
+                    pai.setInfo(maiorF.getInfo());
+                    maiorF.setInfo(aux);
+                }
+
+                posPai--;
+            }
+
+            aux = inicio.getInfo();
+            auxFim = returnNoPos(tl2 - 1);
+            inicio.setInfo(auxFim.getInfo());
+            auxFim.setInfo(aux);
+            tl2--;
+        }
+
     }
 }
