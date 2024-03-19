@@ -16,7 +16,7 @@ public class Main {
         lista.inserirFinal(3);
         lista.exibir();
 
-        lista.heap_soart();
+        lista.shake_sort();
 
        lista.exibir();
     }

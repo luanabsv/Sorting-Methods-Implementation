@@ -199,4 +199,45 @@ public class Lista {
         }
 
     }
+
+    public void shake_sort() {
+        No auxInicio = inicio, auxFim = fim, auxIn;
+        int aux;
+        boolean troca = true;
+
+        while(auxInicio != auxFim && troca) {
+            troca = false;
+
+            auxIn = auxInicio;
+            while(auxIn != auxFim) {
+                if (auxIn.getInfo() > auxIn.getProximo().getInfo()) {
+                    troca = true;
+                    aux = auxIn.getInfo();
+                    auxIn.setInfo(auxIn.getProximo().getInfo());
+                    auxIn.getProximo().setInfo(aux);
+                }
+
+                auxIn = auxIn.getProximo();
+            }
+
+            auxFim = auxFim.getAnterior();
+
+            if (troca) {
+                troca = false;
+
+                auxIn = auxFim;
+                while(auxIn != auxInicio) {
+                    if (auxIn.getInfo() < auxIn.getAnterior().getInfo()) {
+                        troca = true;
+                        aux = auxIn.getInfo();
+                        auxIn.setInfo(auxIn.getAnterior().getInfo());
+                        auxIn.getAnterior().setInfo(aux);
+                    }
+
+                    auxIn = auxIn.getAnterior();
+                }
+                auxInicio = auxIn.getProximo();
+            }
+         }
+    }
 }
