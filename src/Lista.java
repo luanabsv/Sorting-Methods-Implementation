@@ -261,7 +261,7 @@ public class Lista {
 
                 }
             } else {
-                while (j > i && noIni.getInfo() <= noFim.getInfo()) {
+                while (j > i && noFim.getInfo() >= noIni.getInfo()) {
                     j--;
                     noFim = noFim.getAnterior();
                 }
@@ -277,5 +277,36 @@ public class Lista {
             quicksp(ini, i-1);
         if (j + 1 < auxFim)
             quicksp(j + 1, auxFim);
+    }
+
+    public void shell() {
+        int dist = 1, aux, i, j;
+
+        while (dist < tl)
+            dist = dist * 3 + 1;
+        dist = dist / 3;
+
+        while (dist > 0) {
+            No atual;
+            for (i = dist; i < tl; i++) {
+                atual = returnNoPos(i);
+                aux = atual.getInfo();
+                j = i;
+
+                No noJ = returnNoPos(j);
+                No noJDist = returnNoPos(j - dist);
+
+                while (j - dist >= 0 && aux < returnNoPos(j-dist).getInfo()) {
+                    noJ.setInfo(noJDist.getInfo());
+                    j = j - dist;
+
+                   noJ = returnNoPos(j);
+                   noJDist = returnNoPos(j - dist);
+                }
+
+                returnNoPos(j).setInfo(aux);
+            }
+            dist = dist / 3;
+        }
     }
 }

@@ -16,7 +16,7 @@ public class Main {
         lista.inserirFinal(3);*/
         lista.exibir();
 
-        lista.quickspivo();
+        lista.shell();
 
        lista.exibir();
     }
