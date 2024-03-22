@@ -238,6 +238,44 @@ public class Lista {
                 }
                 auxInicio = auxIn.getProximo();
             }
-         }
+        }
+    }
+
+    public void quickspivo() {
+        quicksp(0, tl-1);
+    }
+
+    private void quicksp(int ini, int auxFim) {
+        No noIni, noFim;
+        int aux,  i = ini, j = auxFim;
+        boolean flag = true;
+
+        noIni = returnNoPos(i);
+        noFim = returnNoPos(j);
+        while (i < j) {
+
+            if (flag) {
+                while (i < j && noIni.getInfo() <= noFim.getInfo()) {
+                    i++;
+                    noIni = noIni.getProximo();
+
+                }
+            } else {
+                while (j > i && noIni.getInfo() <= noFim.getInfo()) {
+                    j--;
+                    noFim = noFim.getAnterior();
+                }
+            }
+
+            aux = noIni.getInfo();
+            noIni.setInfo(noFim.getInfo());
+            noFim.setInfo(aux);
+            flag = !flag;
+        }
+
+        if (ini < i - 1)
+            quicksp(ini, i-1);
+        if (j + 1 < auxFim)
+            quicksp(j + 1, auxFim);
     }
 }
