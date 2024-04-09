@@ -88,6 +88,30 @@ public class Lista {
         }
     }
 
+    public int returnPos(No noBusca) {
+        int i = 0;
+        No aux = inicio;
+
+        while (aux != null && noBusca != aux) {
+            aux = aux.getProximo();
+            i++;
+        }
+
+        return i;
+    }
+
+    public No returnNo(int pos) {
+        No atual = inicio;
+        int i = 0;
+
+        while(atual != null && i < pos) {
+            i++;
+            atual = atual.getProximo();
+        }
+
+        return atual;
+    }
+
     public void insertion_sort() {
         int aux;
         No atual = inicio.getProximo(), pos;
@@ -128,6 +152,7 @@ public class Lista {
             atual = atual.getProximo();
         }
     }
+
     public void bubble_sort() {
         No atual, auxFim = fim;
         int aux;
@@ -149,55 +174,6 @@ public class Lista {
             }
             auxFim = auxFim.getAnterior();
         }
-    }
-
-    public No returnNoPos(int pos) {
-        No atual = inicio;
-        int i = 0;
-
-        while(atual != null && i < pos) {
-            i++;
-            atual = atual.getProximo();
-        }
-
-        return atual;
-    }
-
-    public void heap_soart() {
-        No auxFim, fe, fd, maiorF, pai;
-        int posPai, posFe, aux, tl2 = tl;
-
-        while(tl2 > 1) {
-            posPai = tl2 / 2 - 1;
-
-            while (posPai >= 0) {
-                pai = returnNoPos(posPai);
-
-                posFe = 2 * posPai + 1;
-                fe = returnNoPos(posFe);
-                fd = returnNoPos(posFe + 1);
-
-                maiorF = fe;
-                if (posFe + 1 < tl2 &&  fd.getInfo() > fe.getInfo()) {
-                    maiorF = fd;
-                }
-
-                if (maiorF.getInfo() > pai.getInfo()) {
-                    aux = pai.getInfo();
-                    pai.setInfo(maiorF.getInfo());
-                    maiorF.setInfo(aux);
-                }
-
-                posPai--;
-            }
-
-            aux = inicio.getInfo();
-            auxFim = returnNoPos(tl2 - 1);
-            inicio.setInfo(auxFim.getInfo());
-            auxFim.setInfo(aux);
-            tl2--;
-        }
-
     }
 
     public void shake_sort() {
@@ -241,17 +217,124 @@ public class Lista {
         }
     }
 
+    public void shell_sort() {
+        int dist = 1, aux, i, j;
+
+        while (dist < tl)
+            dist = dist * 3 + 1;
+        dist = dist / 3;
+
+        while (dist > 0) {
+            No atual;
+            for (i = dist; i < tl; i++) {
+                atual = returnNo(i);
+                aux = atual.getInfo();
+                j = i;
+
+                No noJ = returnNo(j);
+                No noJDist = returnNo(j - dist);
+
+                while (j - dist >= 0 && aux < returnNo(j-dist).getInfo()) {
+                    noJ.setInfo(noJDist.getInfo());
+                    j = j - dist;
+
+                    noJ = returnNo(j);
+                    noJDist = returnNo(j - dist);
+                }
+
+                returnNo(j).setInfo(aux);
+            }
+            dist = dist / 3;
+        }
+    }
+
+    public void heap_soart() {
+        No auxFim, fe, fd, maiorF, pai;
+        int posPai, posFe, aux, tl2 = tl;
+
+        while(tl2 > 1) {
+            posPai = tl2 / 2 - 1;
+
+            while (posPai >= 0) {
+                pai = returnNo(posPai);
+
+                posFe = 2 * posPai + 1;
+                fe = returnNo(posFe);
+                fd = returnNo(posFe + 1);
+
+                maiorF = fe;
+                if (posFe + 1 < tl2 &&  fd.getInfo() > fe.getInfo()) {
+                    maiorF = fd;
+                }
+
+                if (maiorF.getInfo() > pai.getInfo()) {
+                    aux = pai.getInfo();
+                    pai.setInfo(maiorF.getInfo());
+                    maiorF.setInfo(aux);
+                }
+
+                posPai--;
+            }
+
+            aux = inicio.getInfo();
+            auxFim = returnNo(tl2 - 1);
+            inicio.setInfo(auxFim.getInfo());
+            auxFim.setInfo(aux);
+            tl2--;
+        }
+
+    }
+
+    public void quickcpivo(){
+        quickcp(0, tl-1);
+    }
+
+    private void quickcp(int ini, int auxFim) {
+        int i = ini, j = auxFim, aux;
+
+        No pivo = returnNo((ini + auxFim) / 2);
+        No noI = returnNo(i);
+        No noJ = returnNo(j);
+
+        while(i < j) {
+            while (noI.getInfo() < pivo.getInfo()) {
+                i++;
+                noI = noI.getProximo();
+            }
+
+            while(noJ.getInfo() > pivo.getInfo()) {
+                j--;
+                noJ = noJ.getAnterior();
+            }
+
+            if (i <= j) {
+                aux = noI.getInfo();
+                noI.setInfo(noJ.getInfo());
+                noJ.setInfo(aux);
+                i++;
+                j--;
+                noI = noI.getProximo();
+                noJ = noJ.getAnterior();
+            }
+        }
+
+        if (ini < j)
+            quickcp(ini, j);
+        if (i < auxFim)
+            quickcp(i, auxFim);
+    }
+
     public void quickspivo() {
         quicksp(0, tl-1);
     }
 
     private void quicksp(int ini, int auxFim) {
         No noIni, noFim;
-        int aux,  i = ini, j = auxFim;
+        int aux, i = ini, j = auxFim;
         boolean flag = true;
 
-        noIni = returnNoPos(i);
-        noFim = returnNoPos(j);
+        noIni = returnNo(i);
+        noFim = returnNo(j);
         while (i < j) {
 
             if (flag) {
@@ -261,7 +344,7 @@ public class Lista {
 
                 }
             } else {
-                while (j > i && noFim.getInfo() >= noIni.getInfo()) {
+                while (j > i && noIni.getInfo() <= noFim.getInfo()) {
                     j--;
                     noFim = noFim.getAnterior();
                 }
@@ -274,39 +357,8 @@ public class Lista {
         }
 
         if (ini < i - 1)
-            quicksp(ini, i-1);
+            quicksp(ini, i - 1);
         if (j + 1 < auxFim)
             quicksp(j + 1, auxFim);
-    }
-
-    public void shell() {
-        int dist = 1, aux, i, j;
-
-        while (dist < tl)
-            dist = dist * 3 + 1;
-        dist = dist / 3;
-
-        while (dist > 0) {
-            No atual;
-            for (i = dist; i < tl; i++) {
-                atual = returnNoPos(i);
-                aux = atual.getInfo();
-                j = i;
-
-                No noJ = returnNoPos(j);
-                No noJDist = returnNoPos(j - dist);
-
-                while (j - dist >= 0 && aux < returnNoPos(j-dist).getInfo()) {
-                    noJ.setInfo(noJDist.getInfo());
-                    j = j - dist;
-
-                   noJ = returnNoPos(j);
-                   noJDist = returnNoPos(j - dist);
-                }
-
-                returnNoPos(j).setInfo(aux);
-            }
-            dist = dist / 3;
-        }
     }
 }
