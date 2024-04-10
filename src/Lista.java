@@ -361,4 +361,28 @@ public class Lista {
         if (j + 1 < auxFim)
             quicksp(j + 1, auxFim);
     }
+
+    public void gnome_sort() {
+        No atual = inicio.getProximo(), anterior = inicio, auxAtual;
+        int aux;
+
+        while (atual != null) {
+            if (anterior.getInfo() > atual.getInfo()) {
+                auxAtual =  atual;
+
+                while(anterior != null && anterior.getInfo() > atual.getInfo()) {
+                    aux = atual.getInfo();
+                    atual.setInfo(anterior.getInfo());
+                    anterior.setInfo(aux);
+
+                    anterior = anterior.getAnterior();
+                    atual = atual.getAnterior();
+                }
+
+                atual = auxAtual;
+            }
+            anterior = atual;
+            atual = atual.getProximo();
+        }
+    }
 }

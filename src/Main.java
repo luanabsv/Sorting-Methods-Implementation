@@ -16,7 +16,7 @@ public class Main {
         lista.inserirFinal(3);*/
         lista.exibir();
 
-        lista.quickcpivo();
+        lista.gnome_sort();
 
        lista.exibir();
     }
