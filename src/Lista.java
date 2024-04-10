@@ -362,6 +362,26 @@ public class Lista {
             quicksp(j + 1, auxFim);
     }
 
+    public void comb_sort() {
+        int intervalo = tl, aux;
+
+        while (intervalo > 0) {
+            intervalo = (int) (intervalo / 1.3);
+            int i = 0;
+
+            while (i + intervalo < tl) {
+                if (returnNo(i).getInfo() > returnNo(i + intervalo).getInfo()) {
+                    aux = returnNo(i).getInfo();
+                    returnNo(i).setInfo(returnNo(i + intervalo).getInfo());
+                    returnNo(i + intervalo).setInfo(aux);
+                }
+
+                i++;
+            }
+        }
+
+    }
+
     public void gnome_sort() {
         No atual = inicio.getProximo(), anterior = inicio, auxAtual;
         int aux;
