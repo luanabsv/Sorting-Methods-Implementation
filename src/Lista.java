@@ -56,7 +56,7 @@ public class Lista {
         System.out.println("\n-------------------------------\n");
     }
 
-    public No buscaExaustiva(int info) {
+    private No buscaExaustiva(int info) {
         No atual = inicio;
 
         while (atual != null && atual.getInfo() != info) {
@@ -65,6 +65,25 @@ public class Lista {
 
         return atual;
     }
+
+   private int buscaBinaria(int info, int tlFim) {
+       int inicio = 0, fim = tlFim - 1, meio = fim / 2;
+
+       while (inicio < fim && returnNo(meio).getInfo() != info) {
+        if (info > returnNo(meio).getInfo())
+               inicio = meio + 1;
+           else
+               fim = meio - 1;
+
+           meio = (inicio + fim) / 2;
+       }
+       if (info > returnNo(meio).getInfo())
+           return meio + 1;
+       return meio;
+    }
+
+
+
     public void remover(int info) {
         No remover = buscaExaustiva(info);
 
@@ -127,6 +146,22 @@ public class Lista {
 
             pos.setInfo(aux);
             atual = atual.getProximo();
+        }
+    }
+
+    public void bynary_insertion_sort() {
+        int aux, pos, auxJ;
+
+        for (int i = 1; i < tl; i++) {
+            aux = returnNo(i).getInfo();
+            pos = buscaBinaria(aux, i);
+
+            for (int j = i; j > pos; j--) {
+                auxJ = returnNo(j - 1).getInfo();
+                returnNo(j).setInfo(auxJ);
+            }
+
+            returnNo(pos).setInfo(aux);
         }
     }
 

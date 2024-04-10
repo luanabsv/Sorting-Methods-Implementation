@@ -16,7 +16,7 @@ public class Main {
         lista.inserirFinal(3);*/
         lista.exibir();
 
-        lista.comb_sort();
+        lista.bynary_insertion_sort();
 
        lista.exibir();
     }
