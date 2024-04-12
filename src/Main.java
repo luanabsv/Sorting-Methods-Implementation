@@ -2,11 +2,11 @@ import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Random random = new Random();
+       /* Random random = new Random();
         Lista lista = new Lista(null, null);
         for (int i = 0; i < 7; i++) {
             lista.inserirFinal(random.nextInt(1001));
-        }
+        }*/
        /* lista.inserirFinal(4);
         lista.inserirFinal(9);
         lista.inserirFinal(1);
@@ -14,10 +14,13 @@ public class Main {
         lista.inserirFinal(8);
         lista.inserirFinal(5);
         lista.inserirFinal(3);*/
-        lista.exibir();
+       // lista.exibir();
 
-        lista.bynary_insertion_sort();
+       // lista.timSort();
 
-       lista.exibir();
+       //lista.exibir();
+        Principal principal = new Principal();
+        principal.geraArquivos();
+        principal.bubble();
     }
 }
