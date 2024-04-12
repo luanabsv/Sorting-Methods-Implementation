@@ -143,7 +143,7 @@ public class Arquivo {
     */
 
     public void bubble_sort() {
-        int comp = 0, permut = 0;
+        int comp = 0, mov = 0;
         Registro reg1 = new Registro();
         Registro reg2 = new Registro();
         int tam = filesize();
@@ -160,8 +160,8 @@ public class Arquivo {
                 comp++;
                 if (reg1.getNumero() > reg2.getNumero()) {
                     seekArq(i);
-                    permut++;
-                    permut++;
+                    mov++;
+                    mov++;
                     reg2.gravaNoArq(arquivo);
                     reg1.gravaNoArq(arquivo);
                     troca = true;
@@ -170,9 +170,45 @@ public class Arquivo {
             tam--;
         }
 
-        System.out.println("Permutações: " + permut);
+        System.out.println("Permutações: " + mov);
         System.out.println("Comparações: " + comp);
     }
+
+    public void insertion_sort() {
+        Registro regPos = new Registro();
+        Registro regAntPos = new Registro();
+        int tam = filesize(), i = 1, pos, comp = 0, mov = 0;
+
+        while (i < tam) {
+            pos = i;
+            seekArq(pos);
+            regPos.leDoArq(arquivo);
+            seekArq(pos - 1);
+            regAntPos.leDoArq(arquivo);
+
+            comp++;
+            while (pos > 0 && regAntPos.getNumero() > regPos.getNumero()) {
+                seekArq(pos);
+                mov++;
+                regAntPos.gravaNoArq(arquivo);
+                pos--;
+                if (pos > 0) {
+                    seekArq(pos - 1);
+                    regAntPos.leDoArq(arquivo);
+                }
+            }
+
+            seekArq(pos);
+            if(pos != i) {
+                mov++;
+                regPos.gravaNoArq(arquivo);
+            }
+            i++;
+        }
+        System.out.println("Movimentações: " + mov);
+        System.out.println("Comparações: " + comp);
+    }
+
     public void executa()
     {
         exibirArq();
