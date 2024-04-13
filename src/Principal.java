@@ -16,7 +16,7 @@ public class Principal {
        //auxRand.exibirArq();
         //auxRand.exibirArq();
        arqRev.geraArquivoReverso();
-      auxRev.copiaArq(arqRev.getFile());
+       auxRev.copiaArq(arqRev.getFile());
         //auxRev.exibirArq();
         //arqOrd.geraArquivoReverso();
         //arqOrd.exibirArq();
@@ -58,6 +58,29 @@ public class Principal {
         System.out.println("-------------------------------------");
         arqOrd.insertion_sort();
         arqOrd.exibirArq();*/
+    }
+
+    public void binary_insertion_sort() {
+        /*auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        auxRand.binary_insertion_sort();
+        auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqRand.exibirArq();*/
+
+        /*arqOrd.exibirArq();
+        arqOrd.binary_insertion_sort();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqOrd.exibirArq();*/
+
+        arqRev.exibirArq();
+        auxRev.binary_insertion_sort();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        auxRev.exibirArq();
     }
 
     public void selection() {

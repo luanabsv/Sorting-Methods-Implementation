@@ -21,6 +21,6 @@ public class Main {
        //lista.exibir();
         Principal principal = new Principal();
         principal.geraArquivos();
-        principal.shell_sort();
+        principal.binary_insertion_sort();
     }
 }

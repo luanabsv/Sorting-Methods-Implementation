@@ -184,6 +184,56 @@ public class Arquivo {
         System.out.println("Comparações: " + comparacoes);
     }
 
+    private int binary_search(int info, int tl) {
+        int ini = 0, fim = tl - 1, meio = fim / 2;
+        Registro regMeio = new Registro();
+
+        seekArq(meio);
+        regMeio.leDoArq(arquivo);
+        comparacoes++;
+        while(ini < fim && info != regMeio.getNumero()) {
+            comparacoes++;
+            if (info < regMeio.getNumero())
+                fim = meio - 1;
+            else
+                ini = meio + 1;
+
+            meio = (ini + fim) / 2;
+            seekArq(meio);
+            regMeio.leDoArq(arquivo);
+        }
+
+        comparacoes++;
+        if (info > regMeio.getNumero())
+            return meio + 1;
+        return meio;
+    }
+
+    public void binary_insertion_sort() {
+        int pos;
+        Registro reg = new Registro();
+        Registro regAntJ = new Registro();
+
+        for (int i = 1; i < filesize(); i++) {
+            seekArq(i);
+            reg.leDoArq(arquivo);
+            pos = binary_search(reg.getNumero(), i);
+
+            for (int j = i; j > pos; j--) {
+                seekArq(j - 1);
+                regAntJ.leDoArq(arquivo);
+                regAntJ.gravaNoArq(arquivo);
+                movimentacoes++;
+            }
+            movimentacoes++;
+            seekArq(pos);
+            reg.gravaNoArq(arquivo);
+        }
+
+        System.out.println("Movimentações: " + movimentacoes);
+        System.out.println("Comparações: " + comparacoes);
+    }
+
     public void selection_sort() {
         Registro regJ = new Registro();
         Registro regPosMenor = new Registro();
