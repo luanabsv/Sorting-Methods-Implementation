@@ -177,7 +177,7 @@ public class Principal {
         auxRand.exibirArq();
         System.out.println("-------------------------------------");
         System.out.println("-------------------------------------");
-        auxRand.heap_sort();
+        auxRand.gnome_sort();
         auxRand.exibirArq();
         System.out.println("-------------------------------------");
         System.out.println("-------------------------------------");

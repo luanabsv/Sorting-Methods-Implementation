@@ -453,8 +453,10 @@ public class Arquivo {
             regAnt.leDoArq(arquivo);
             regI.leDoArq(arquivo);
 
+            comparacoes++;
             if (regI.getNumero() < regAnt.getNumero()) {
                 seekArq(index - 1);
+                movimentacoes += 2;
                 regI.gravaNoArq(arquivo);
                 regAnt.gravaNoArq(arquivo);
 
@@ -464,6 +466,9 @@ public class Arquivo {
             } else
                 index++;
         }
+
+        System.out.println("Movimentações: " + movimentacoes);
+        System.out.println("Comparações: " + comparacoes);
     }
 
     public void executa() {
