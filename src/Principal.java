@@ -11,11 +11,11 @@ public class Principal {
         auxRand = new Arquivo("copiaarqrev.dat");
         auxRev = new Arquivo("copiaarqrev.dat");
         //arqOrd.geraArquivoOrdenado();
-       // arqRand.geraArquivoDesordenado();
-        //auxRand.copiaArq(arqRand.getFile());
+        arqRand.geraArquivoDesordenado();
+        auxRand.copiaArq(arqRand.getFile());
 
-        arqRev.geraArquivoReverso();
-        auxRev.copiaArq(arqRev.getFile());
+        //arqRev.geraArquivoReverso();
+        //auxRev.copiaArq(arqRev.getFile());
 
         //auxRand.exibirArq();
         //auxRev.exibirArq();
@@ -197,6 +197,28 @@ public class Principal {
         auxRev.exibirArq();
     }
 
+    public void quickcpivo() {
+        /*auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        auxRand.quickcpivo();
+        auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqRand.exibirArq();*/
+
+       arqOrd.exibirArq();
+        arqOrd.quickcpivo();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqOrd.exibirArq();
+
+        /*arqRev.exibirArq();
+        auxRev.quickcpivo();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        auxRev.exibirArq();*/
+    }
     public void comb_sort() {
         /*auxRand.exibirArq();
         System.out.println("-------------------------------------");

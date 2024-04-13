@@ -498,6 +498,61 @@ public class Arquivo {
             quicksp(j + 1, fim);
     }
 
+    public void quickcpivo(){
+        quickcp(0, filesize()-1);
+        System.out.println("Movimentações: " + movimentacoes);
+        System.out.println("Comparações: " + comparacoes);
+    }
+
+    private void quickcp(int ini, int fim) {
+        int i = ini, j = fim;
+        Registro regPivo = new Registro();
+        Registro regI = new Registro();
+        Registro regJ = new Registro();
+
+        seekArq((ini + fim) / 2);
+        regPivo.leDoArq(arquivo);
+
+        while (i < j) {
+            seekArq(i);
+            regI.leDoArq(arquivo);
+
+            comparacoes++;
+            while (regI.getNumero() < regPivo.getNumero()) {
+                i++;
+                seekArq(i);
+                regI.leDoArq(arquivo);
+                comparacoes++;
+            }
+
+            seekArq(j);
+            regJ.leDoArq(arquivo);
+
+            comparacoes++;
+            while(regJ.getNumero() > regPivo.getNumero()) {
+                j--;
+                seekArq(j);
+                regJ.leDoArq(arquivo);
+                comparacoes++;
+            }
+
+            if (i <= j) {
+                seekArq(i);
+                movimentacoes += 2;
+                regJ.gravaNoArq(arquivo);
+
+                seekArq(j);
+                regI.gravaNoArq(arquivo);
+                i++;
+                j--;
+            }
+        }
+
+        if (ini < j)
+            quickcp(ini, j);
+        if (i < fim)
+            quickcp(i, fim);
+    }
 
     public void comb_sort() {
         int intervalo = filesize(), aux;
@@ -530,7 +585,6 @@ public class Arquivo {
         System.out.println("Movimentações: " + movimentacoes);
         System.out.println("Comparações: " + comparacoes);
     }
-
 
     public void gnome_sort() {
         int index = 1;
