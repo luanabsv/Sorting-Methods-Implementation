@@ -13,13 +13,11 @@ public class Arquivo {
     private int comparacoes = 0;
     private int movimentacoes = 0;
 
-    public Arquivo(String nomearquivo)
-    {
-        try
-        {
+    public Arquivo(String nomearquivo) {
+        try {
             arquivo = new RandomAccessFile(nomearquivo, "rw");
-        } catch (IOException e)
-        { }
+        } catch (IOException e) {
+        }
     }
 
     public int getComparacoes() {
@@ -42,50 +40,43 @@ public class Arquivo {
         return arquivo;
     }
 
-    public void truncate(long pos)
-    {
-        try
-        {
+    public void truncate(long pos) {
+        try {
             arquivo.setLength(pos * Registro.length());
-        } catch (IOException exc)
-        { }
+        } catch (IOException exc) {
+        }
     }
 
-    public boolean eof()
-    {
+    public boolean eof() {
         boolean retorno = false;
-        try
-        {
+        try {
             if (arquivo.getFilePointer() == arquivo.length())
                 retorno = true;
-        } catch (IOException e)
-        { }
+        } catch (IOException e) {
+        }
         return (retorno);
     }
 
     //insere um Registro no final do arquivo, passado por par�metro
-    public void inserirRegNoFinal(Registro reg)
-    {
+    public void inserirRegNoFinal(Registro reg) {
         seekArq(filesize());//ultimo byte
         reg.gravaNoArq(arquivo);
     }
 
     public int filesize() {
         try {
-            return  (int)arquivo.length() / Registro.length();
+            return (int) arquivo.length() / Registro.length();
         } catch (IOException e) {
             return 0;
         }
     }
 
-    public void exibirArq()
-    {
+    public void exibirArq() {
         int i;
         Registro aux = new Registro();
         seekArq(0);
         i = 0;
-        while (!this.eof())
-        {
+        while (!this.eof()) {
             //System.out.println("Posicao " + i);
             aux.leDoArq(arquivo);
             aux.exibirReg();
@@ -93,8 +84,7 @@ public class Arquivo {
         }
     }
 
-    public void exibirUmRegistro(int pos)
-    {
+    public void exibirUmRegistro(int pos) {
         Registro aux = new Registro();
         seekArq(pos);
         //System.out.println("Posicao " + pos);
@@ -102,13 +92,11 @@ public class Arquivo {
         aux.exibirReg();
     }
 
-    public void seekArq(int pos)
-    {
-        try
-        {
+    public void seekArq(int pos) {
+        try {
             arquivo.seek(pos * Registro.length());
-        } catch (IOException e)
-        { }
+        } catch (IOException e) {
+        }
     }
 
     public void geraArquivoOrdenado() {
@@ -123,8 +111,8 @@ public class Arquivo {
         Registro reg;
         Random random = new Random();
         for (int i = 0; i < 8; i++) {
-           reg = new Registro(random.nextInt(1001));
-           reg.gravaNoArq(arquivo);
+            reg = new Registro(random.nextInt(1001));
+            reg.gravaNoArq(arquivo);
         }
     }
 
@@ -169,10 +157,10 @@ public class Arquivo {
         int tam = filesize();
         boolean troca = true;
 
-        while(tam > 1 && troca) {
+        while (tam > 1 && troca) {
             troca = false;
 
-            for(int i = 0; i < tam - 1; i++) {
+            for (int i = 0; i < tam - 1; i++) {
                 seekArq(i);
                 reg1.leDoArq(arquivo);
                 reg2.leDoArq(arquivo);
@@ -219,7 +207,7 @@ public class Arquivo {
             }
 
             seekArq(pos);
-            if(pos != i) {
+            if (pos != i) {
                 movimentacoes++;
                 regPos.gravaNoArq(arquivo);
             }
@@ -234,20 +222,20 @@ public class Arquivo {
         Registro regPosMenor = new Registro();
         int i = 0;
 
-        while(i < filesize() - 1) {
+        while (i < filesize() - 1) {
             int posMenor = i;
             seekArq(posMenor);
             regPosMenor.leDoArq(arquivo);
 
             int j = i + 1;
 
-            while(j < filesize()) {
+            while (j < filesize()) {
                 seekArq(j);
                 regJ.leDoArq(arquivo);
 
 
                 this.comparacoes++;
-                if(regJ.getNumero()< regPosMenor.getNumero()) {
+                if (regJ.getNumero() < regPosMenor.getNumero()) {
                     posMenor = j;
                     seekArq(posMenor);
                     regPosMenor.leDoArq(arquivo);
@@ -275,10 +263,49 @@ public class Arquivo {
         System.out.println("Comparações: " + comparacoes);
     }
 
+    public void shake_sort() {
+        int inicio = 0, fim = filesize() - 1;
+        Registro regAtual = new Registro();
+        Registro regAux = new Registro();
+
+        while (inicio < fim) {
+            for (int i = 0; i < fim; i++) {
+                seekArq(i);
+                regAtual.leDoArq(arquivo);
+                regAux.leDoArq(arquivo);
+                comparacoes++;
+
+                if (regAtual.getNumero() > regAux.getNumero()) {
+                    seekArq(i);
+                    movimentacoes += 2;
+                    regAux.gravaNoArq(arquivo);
+                    regAtual.gravaNoArq(arquivo);
+                }
+            }
+            fim--;
+
+            for (int i = fim; i > inicio; i--) {
+                seekArq(i - 1);
+                regAux.leDoArq(arquivo);
+                regAtual.leDoArq(arquivo);
+
+                comparacoes++;
+                if (regAtual.getNumero() < regAux.getNumero()) {
+                    seekArq(i - 1);
+                    movimentacoes += 2;
+                    regAtual.gravaNoArq(arquivo);
+                    regAux.gravaNoArq(arquivo);
+                }
+            }
+            inicio++;
+        }
+
+        System.out.println("Movimentações: " + movimentacoes);
+        System.out.println("Comparações: " + comparacoes);
+    }
 
 
-    public void executa()
-    {
+    public void executa() {
         exibirArq();
     }
 
