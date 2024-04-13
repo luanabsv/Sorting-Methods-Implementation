@@ -191,7 +191,7 @@ public class Arquivo {
         seekArq(meio);
         regMeio.leDoArq(arquivo);
         comparacoes++;
-        while(ini < fim && info != regMeio.getNumero()) {
+        while (ini < fim && info != regMeio.getNumero()) {
             comparacoes++;
             if (info < regMeio.getNumero())
                 fim = meio - 1;
@@ -359,7 +359,7 @@ public class Arquivo {
         Registro regAux = new Registro();
         Registro regJDist = new Registro();
 
-        while(dist < filesize())
+        while (dist < filesize())
             dist = dist * 3 + 1;
         dist = dist / 3;
 
@@ -401,10 +401,10 @@ public class Arquivo {
         Registro regFim = new Registro();
         Registro regIni = new Registro();
 
-        while(fim > 1) {
+        while (fim > 1) {
             pai = fim / 2 - 1;
 
-            while(pai >= 0) {
+            while (pai >= 0) {
                 fe = 2 * pai + 1;
                 maiorF = fe;
 
@@ -442,6 +442,40 @@ public class Arquivo {
             fim--;
         }
     }
+
+
+    public void comb_sort() {
+        int intervalo = filesize(), aux;
+        Registro regI = new Registro();
+        Registro regIIntervalo = new Registro();
+
+        while (intervalo > 0) {
+            intervalo = (int) (intervalo / 1.3);
+            int i = 0;
+
+            while (i + intervalo < filesize()) {
+                seekArq(i);
+                regI.leDoArq(arquivo);
+
+                seekArq(i + intervalo);
+                regIIntervalo.leDoArq(arquivo);
+
+                comparacoes++;
+                if (regI.getNumero() > regIIntervalo.getNumero()) {
+                   seekArq(i);
+                   movimentacoes+=2;
+                   regIIntervalo.gravaNoArq(arquivo);
+                   seekArq(i + intervalo);
+                   regI.gravaNoArq(arquivo);
+                }
+
+                i++;
+            }
+        }
+        System.out.println("Movimentações: " + movimentacoes);
+        System.out.println("Comparações: " + comparacoes);
+    }
+
 
     public void gnome_sort() {
         int index = 1;

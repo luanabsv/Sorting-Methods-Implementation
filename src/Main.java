@@ -21,6 +21,6 @@ public class Main {
        //lista.exibir();
         Principal principal = new Principal();
         principal.geraArquivos();
-        principal.gnome_sort();
+        principal.comb_sort();
     }
 }
