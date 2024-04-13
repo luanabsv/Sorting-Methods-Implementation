@@ -442,6 +442,30 @@ public class Arquivo {
             fim--;
         }
     }
+
+    public void gnome_sort() {
+        int index = 1;
+        Registro regI = new Registro();
+        Registro regAnt = new Registro();
+
+        while (index < filesize()) {
+            seekArq(index - 1);
+            regAnt.leDoArq(arquivo);
+            regI.leDoArq(arquivo);
+
+            if (regI.getNumero() < regAnt.getNumero()) {
+                seekArq(index - 1);
+                regI.gravaNoArq(arquivo);
+                regAnt.gravaNoArq(arquivo);
+
+                if (index > 1) {
+                    index--;
+                }
+            } else
+                index++;
+        }
+    }
+
     public void executa() {
         exibirArq();
     }

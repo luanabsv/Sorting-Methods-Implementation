@@ -11,12 +11,12 @@ public class Principal {
         auxRand = new Arquivo("copiaarqrev.dat");
         auxRev = new Arquivo("copiaarqrev.dat");
         //arqOrd.geraArquivoOrdenado();
-        //arqRand.geraArquivoDesordenado();
-        //auxRand.copiaArq(arqRand.getFile());
+        arqRand.geraArquivoDesordenado();
+        auxRand.copiaArq(arqRand.getFile());
        //auxRand.exibirArq();
         //auxRand.exibirArq();
-       arqRev.geraArquivoReverso();
-       auxRev.copiaArq(arqRev.getFile());
+       //arqRev.geraArquivoReverso();
+       //auxRev.copiaArq(arqRev.getFile());
         //auxRev.exibirArq();
         //arqOrd.geraArquivoReverso();
         //arqOrd.exibirArq();
@@ -171,6 +171,29 @@ public class Principal {
         System.out.println("-------------------------------------");
         System.out.println("-------------------------------------");
         auxRev.exibirArq();
+    }
+
+    public void gnome_sort() {
+        auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        auxRand.heap_sort();
+        auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqRand.exibirArq();
+
+        /*arqOrd.exibirArq();
+        arqOrd.heap_sort();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqOrd.exibirArq();*/
+
+        /*arqRev.exibirArq();
+        auxRev.gnome_sort();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        auxRev.exibirArq();*/
     }
 
 
