@@ -21,6 +21,6 @@ public class Main {
        //lista.exibir();
         Principal principal = new Principal();
         principal.geraArquivos();
-        principal.shake_sort();
+        principal.heap_sort();
     }
 }

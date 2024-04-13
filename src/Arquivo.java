@@ -149,39 +149,6 @@ public class Arquivo {
 
     */
 
-    public void bubble_sort() {
-        movimentacoes = 0;
-        comparacoes = 0;
-        Registro reg1 = new Registro();
-        Registro reg2 = new Registro();
-        int tam = filesize();
-        boolean troca = true;
-
-        while (tam > 1 && troca) {
-            troca = false;
-
-            for (int i = 0; i < tam - 1; i++) {
-                seekArq(i);
-                reg1.leDoArq(arquivo);
-                reg2.leDoArq(arquivo);
-
-                comparacoes++;
-                if (reg1.getNumero() > reg2.getNumero()) {
-                    seekArq(i);
-                    movimentacoes++;
-                    movimentacoes++;
-                    reg2.gravaNoArq(arquivo);
-                    reg1.gravaNoArq(arquivo);
-                    troca = true;
-                }
-            }
-            tam--;
-        }
-
-        System.out.println("Permutações: " + movimentacoes);
-        System.out.println("Comparações: " + comparacoes);
-    }
-
     public void insertion_sort() {
         Registro regPos = new Registro();
         Registro regAntPos = new Registro();
@@ -263,6 +230,39 @@ public class Arquivo {
         System.out.println("Comparações: " + comparacoes);
     }
 
+    public void bubble_sort() {
+        movimentacoes = 0;
+        comparacoes = 0;
+        Registro reg1 = new Registro();
+        Registro reg2 = new Registro();
+        int tam = filesize();
+        boolean troca = true;
+
+        while (tam > 1 && troca) {
+            troca = false;
+
+            for (int i = 0; i < tam - 1; i++) {
+                seekArq(i);
+                reg1.leDoArq(arquivo);
+                reg2.leDoArq(arquivo);
+
+                comparacoes++;
+                if (reg1.getNumero() > reg2.getNumero()) {
+                    seekArq(i);
+                    movimentacoes++;
+                    movimentacoes++;
+                    reg2.gravaNoArq(arquivo);
+                    reg1.gravaNoArq(arquivo);
+                    troca = true;
+                }
+            }
+            tam--;
+        }
+
+        System.out.println("Permutações: " + movimentacoes);
+        System.out.println("Comparações: " + comparacoes);
+    }
+
     public void shake_sort() {
         int inicio = 0, fim = filesize() - 1;
         Registro regAtual = new Registro();
@@ -304,7 +304,54 @@ public class Arquivo {
         System.out.println("Comparações: " + comparacoes);
     }
 
+    public void heap_sort() {
+        int fim = filesize(), fe, maiorF, pai;
+        Registro reg1 = new Registro();
+        Registro reg2 = new Registro();
+        Registro regFim = new Registro();
+        Registro regIni = new Registro();
 
+        while(fim > 1) {
+            pai = fim / 2 - 1;
+
+            while(pai >= 0) {
+                fe = 2 * pai + 1;
+                maiorF = fe;
+
+                seekArq(fe);
+                reg1.leDoArq(arquivo);
+                reg2.leDoArq(arquivo);
+
+                if (fe + 1 < fim && reg2.getNumero() > reg1.getNumero())
+                    maiorF = fe + 1;
+
+                seekArq(maiorF);
+                reg1.leDoArq(arquivo);
+                seekArq(pai);
+                reg2.leDoArq(arquivo);
+
+                if (reg1.getNumero() > reg2.getNumero()) {
+                    seekArq(pai);
+                    reg1.gravaNoArq(arquivo);
+                    seekArq(maiorF);
+                    reg2.gravaNoArq(arquivo);
+                }
+
+                pai--;
+            }
+
+            seekArq(0);
+            regIni.leDoArq(arquivo);
+            seekArq(fim - 1);
+            regFim.leDoArq(arquivo);
+
+            seekArq(0);
+            regFim.gravaNoArq(arquivo);
+            seekArq(fim - 1);
+            regIni.gravaNoArq(arquivo);
+            fim--;
+        }
+    }
     public void executa() {
         exibirArq();
     }
