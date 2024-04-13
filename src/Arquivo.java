@@ -304,6 +304,46 @@ public class Arquivo {
         System.out.println("Comparações: " + comparacoes);
     }
 
+    public void shell_sort() {
+        int i, j, dist = 1;
+        Registro regAux = new Registro();
+        Registro regJDist = new Registro();
+
+        while(dist < filesize())
+            dist = dist * 3 + 1;
+        dist = dist / 3;
+
+        while (dist > 0) {
+            for (i = dist; i < filesize(); i++) {
+                seekArq(i);
+                regAux.leDoArq(arquivo);
+
+                j = i;
+
+                seekArq(j - dist);
+                regJDist.leDoArq(arquivo);
+                while (j - dist >= 0 && regAux.getNumero() < regJDist.getNumero()) {
+                    seekArq(j);
+                    movimentacoes++;
+                    regJDist.gravaNoArq(arquivo);
+                    j = j - dist;
+
+                    seekArq(j - dist);
+                    regJDist.leDoArq(arquivo);
+                    comparacoes++;
+                }
+                comparacoes++;
+
+                seekArq(j);
+                movimentacoes++;
+                regAux.gravaNoArq(arquivo);
+            }
+            dist = dist / 3;
+        }
+        System.out.println("Movimentações: " + movimentacoes);
+        System.out.println("Comparações: " + comparacoes);
+    }
+
     public void heap_sort() {
         int fim = filesize(), fe, maiorF, pai;
         Registro reg1 = new Registro();

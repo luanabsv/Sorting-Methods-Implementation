@@ -16,7 +16,7 @@ public class Principal {
        //auxRand.exibirArq();
         //auxRand.exibirArq();
        arqRev.geraArquivoReverso();
-        auxRev.copiaArq(arqRev.getFile());
+      auxRev.copiaArq(arqRev.getFile());
         //auxRev.exibirArq();
         //arqOrd.geraArquivoReverso();
         //arqOrd.exibirArq();
@@ -102,6 +102,29 @@ public class Principal {
         System.out.println("-------------------------------------");
         System.out.println("-------------------------------------");
         auxRev.exibirArq();*/
+    }
+
+    public void shell_sort () {
+       /* auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        auxRand.shell_sort();
+        auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqRand.exibirArq();*/
+
+        /*arqOrd.exibirArq();
+        arqOrd.shell_sort();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqOrd.exibirArq();*/
+
+        arqRev.exibirArq();
+        auxRev.shell_sort();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        auxRev.exibirArq();
     }
 
     public void heap_sort() {
