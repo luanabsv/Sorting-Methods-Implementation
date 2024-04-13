@@ -444,6 +444,61 @@ public class Arquivo {
     }
 
 
+    public void quickspivo() {
+        quicksp(0, filesize() - 1);
+        System.out.println("Movimentações: " + movimentacoes);
+        System.out.println("Comparações: " + comparacoes);
+    }
+    private void quicksp(int ini, int fim){
+        int i = ini, j = fim;
+        boolean flag = true;
+        Registro regI = new Registro();
+        Registro regJ = new Registro();
+
+        while(i < j) {
+            seekArq(i);
+            regI.leDoArq(arquivo);
+
+            seekArq(j);
+            regJ.leDoArq(arquivo);
+
+            if (flag) {
+                comparacoes++;
+                while(i < j && regI.getNumero() <= regJ.getNumero()) {
+                    i++;
+                    seekArq(i);
+                    regI.leDoArq(arquivo);
+                    comparacoes++;
+                }
+            } else {
+                comparacoes++;
+                while(i < j && regJ.getNumero() >= regI.getNumero()) {
+                   j--;
+                   seekArq(j);
+                   regJ.leDoArq(arquivo);
+                   comparacoes++;
+               }
+            }
+
+            movimentacoes+=2;
+            seekArq(i);
+            regI.leDoArq(arquivo);
+            seekArq(j);
+            regJ.leDoArq(arquivo);
+
+            seekArq(i);
+            regJ.gravaNoArq(arquivo);
+            seekArq(j);
+            regI.gravaNoArq(arquivo);
+        }
+
+        if (ini < i - 1)
+            quicksp(ini, i - 1);
+        if (j + 1 < fim)
+            quicksp(j + 1, fim);
+    }
+
+
     public void comb_sort() {
         int intervalo = filesize(), aux;
         Registro regI = new Registro();

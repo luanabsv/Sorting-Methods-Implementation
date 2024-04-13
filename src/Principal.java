@@ -11,7 +11,7 @@ public class Principal {
         auxRand = new Arquivo("copiaarqrev.dat");
         auxRev = new Arquivo("copiaarqrev.dat");
         //arqOrd.geraArquivoOrdenado();
-        //arqRand.geraArquivoDesordenado();
+       // arqRand.geraArquivoDesordenado();
         //auxRand.copiaArq(arqRand.getFile());
 
         arqRev.geraArquivoReverso();
@@ -169,6 +169,29 @@ public class Principal {
 
        arqRev.exibirArq();
         auxRev.heap_sort();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        auxRev.exibirArq();
+    }
+
+    public void quickspivo() {
+       /* auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        auxRand.quickspivo();
+        auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqRand.exibirArq();*/
+
+       /* arqOrd.exibirArq();
+        arqOrd.quickspivo();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqOrd.exibirArq();*/
+
+        arqRev.exibirArq();
+        auxRev.quickspivo();
         System.out.println("-------------------------------------");
         System.out.println("-------------------------------------");
         auxRev.exibirArq();
