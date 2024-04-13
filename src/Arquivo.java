@@ -10,6 +10,9 @@ public class Arquivo {
     private String nomearquivo;
     private RandomAccessFile arquivo;
 
+    private int comparacoes = 0;
+    private int movimentacoes = 0;
+
     public Arquivo(String nomearquivo)
     {
         try
@@ -17,6 +20,22 @@ public class Arquivo {
             arquivo = new RandomAccessFile(nomearquivo, "rw");
         } catch (IOException e)
         { }
+    }
+
+    public int getComparacoes() {
+        return comparacoes;
+    }
+
+    public void setComparacoes(int comparacoes) {
+        this.comparacoes = comparacoes;
+    }
+
+    public int getMovimentacoes() {
+        return movimentacoes;
+    }
+
+    public void setMovimentacoes(int movimentacoes) {
+        this.movimentacoes = movimentacoes;
     }
 
     public RandomAccessFile getFile() {
@@ -143,7 +162,8 @@ public class Arquivo {
     */
 
     public void bubble_sort() {
-        int comp = 0, mov = 0;
+        movimentacoes = 0;
+        comparacoes = 0;
         Registro reg1 = new Registro();
         Registro reg2 = new Registro();
         int tam = filesize();
@@ -157,11 +177,11 @@ public class Arquivo {
                 reg1.leDoArq(arquivo);
                 reg2.leDoArq(arquivo);
 
-                comp++;
+                comparacoes++;
                 if (reg1.getNumero() > reg2.getNumero()) {
                     seekArq(i);
-                    mov++;
-                    mov++;
+                    movimentacoes++;
+                    movimentacoes++;
                     reg2.gravaNoArq(arquivo);
                     reg1.gravaNoArq(arquivo);
                     troca = true;
@@ -170,14 +190,14 @@ public class Arquivo {
             tam--;
         }
 
-        System.out.println("Permutações: " + mov);
-        System.out.println("Comparações: " + comp);
+        System.out.println("Permutações: " + movimentacoes);
+        System.out.println("Comparações: " + comparacoes);
     }
 
     public void insertion_sort() {
         Registro regPos = new Registro();
         Registro regAntPos = new Registro();
-        int tam = filesize(), i = 1, pos, comp = 0, mov = 0;
+        int tam = filesize(), i = 1, pos;
 
         while (i < tam) {
             pos = i;
@@ -186,10 +206,10 @@ public class Arquivo {
             seekArq(pos - 1);
             regAntPos.leDoArq(arquivo);
 
-            comp++;
+            comparacoes++;
             while (pos > 0 && regAntPos.getNumero() > regPos.getNumero()) {
                 seekArq(pos);
-                mov++;
+                movimentacoes++;
                 regAntPos.gravaNoArq(arquivo);
                 pos--;
                 if (pos > 0) {
@@ -200,14 +220,62 @@ public class Arquivo {
 
             seekArq(pos);
             if(pos != i) {
-                mov++;
+                movimentacoes++;
                 regPos.gravaNoArq(arquivo);
             }
             i++;
         }
-        System.out.println("Movimentações: " + mov);
-        System.out.println("Comparações: " + comp);
+        System.out.println("Movimentações: " + movimentacoes);
+        System.out.println("Comparações: " + comparacoes);
     }
+
+    public void selection_sort() {
+        Registro regJ = new Registro();
+        Registro regPosMenor = new Registro();
+        int i = 0;
+
+        while(i < filesize() - 1) {
+            int posMenor = i;
+            seekArq(posMenor);
+            regPosMenor.leDoArq(arquivo);
+
+            int j = i + 1;
+
+            while(j < filesize()) {
+                seekArq(j);
+                regJ.leDoArq(arquivo);
+
+
+                this.comparacoes++;
+                if(regJ.getNumero()< regPosMenor.getNumero()) {
+                    posMenor = j;
+                    seekArq(posMenor);
+                    regPosMenor.leDoArq(arquivo);
+                }
+                j++;
+            }
+
+            if (posMenor != i) {
+
+                seekArq(i);
+                regJ.leDoArq(arquivo);
+
+                seekArq(posMenor);
+                movimentacoes++;
+                regJ.gravaNoArq(arquivo);
+
+                seekArq(i);
+                movimentacoes++;
+                regPosMenor.gravaNoArq(arquivo);
+            }
+            i++;
+        }
+
+        System.out.println("Movimentações: " + movimentacoes);
+        System.out.println("Comparações: " + comparacoes);
+    }
+
+
 
     public void executa()
     {

@@ -12,14 +12,14 @@ public class Principal {
         //auxRev = new Arquivo("copiaarqrev.dat");
         //arqOrd.geraArquivoOrdenado();
         arqRand.geraArquivoDesordenado();
-        auxRand.copiaArq(arqRand.getFile());
+       auxRand.copiaArq(arqRand.getFile());
+       //auxRand.exibirArq();
         //auxRand.exibirArq();
-        //arqRev.geraArquivoReverso();
+        arqRev.geraArquivoReverso();
         //auxRev.copiaArq(arqRev.getFile());
        // arqRev.exibirArq();
-
-        /*arqOrd.geraArquivoReverso();
-        arqOrd.exibirArq();*/
+        //arqOrd.geraArquivoReverso();
+        //arqOrd.exibirArq();
         System.out.println("-------------------------------------");
         //arqRand.exibirArq();
         System.out.println("-------------------------------------");
@@ -47,7 +47,7 @@ public class Principal {
         System.out.println("-------------------------------------");
         System.out.println("-------------------------------------");
         arqRand.exibirArq();
-
+     //   this.selection();
        /* auxRev.insertion_sort();
         auxRev.exibirArq();
         System.out.println("-------------------------------------");
@@ -58,6 +58,27 @@ public class Principal {
         System.out.println("-------------------------------------");
         arqOrd.insertion_sort();
         arqOrd.exibirArq();*/
+    }
+
+    public void selection() {
+        auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        auxRand.selection_sort();
+        auxRand.exibirArq();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqRand.exibirArq();
+
+        /*arqOrd.exibirArq();
+        arqOrd.selection_sort();
+        System.out.println("-------------------------------------");
+        System.out.println("-------------------------------------");
+        arqOrd.exibirArq();*/
+
+        /*arqRev.exibirArq();
+        auxRev.selection_sort();
+        auxRev.exibirArq();*/
     }
 
 
