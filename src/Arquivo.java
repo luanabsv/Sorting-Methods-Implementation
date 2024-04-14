@@ -111,7 +111,7 @@ public class Arquivo {
         Registro reg;
         Random random = new Random();
         for (int i = 0; i < tam; i++) {
-            reg = new Registro(random.nextInt(1000));
+            reg = new Registro(random.nextInt(1000) + 1);
             reg.gravaNoArq(arquivo);
         }
     }
