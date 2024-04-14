@@ -364,7 +364,7 @@ public class Principal {
         copia.insertion_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (tam * tam + tam - 2) / 4, copia.getMovimentacoes(), ((tam * tam + 9 * tam - 10 ) / 4), duration));
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (int) ((tam * tam + tam - 2) / 4), copia.getMovimentacoes(), (tam * tam + 9 * tam - 10 ) / 4, duration));
         tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     }
 
@@ -376,7 +376,7 @@ public class Principal {
         copia.binary_insertion_sort();
         tempoFinal = System.currentTimeMillis();
         long duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("| %-22s |  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", "Binnary Insertion", copia.getComparacoes(),  tam * (Math.log(tam) - Math.log(Math.E) + 0.5)
+        tabela.writeBytes(String.format("| %-22s |  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", "Binnary Insertion", copia.getComparacoes(), (int) (tam * (Math.log(tam) - Math.log(Math.E) + 0.5))
                 , copia.getMovimentacoes(), 3 * (tam - 1), duration));
 
         copia.copiaArq(arqRev.getFile());
@@ -387,7 +387,7 @@ public class Principal {
         tempoFinal = System.currentTimeMillis();
 
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", copia.getComparacoes(),  tam * (Math.log(tam) - Math.log(Math.E) + 0.5), copia.getMovimentacoes(), (Math.pow(tam, 2)+ 3 * tam - 4) / 2, duration));
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", copia.getComparacoes(), (int) (tam * (Math.log(tam) - Math.log(Math.E) + 0.5)), copia.getMovimentacoes(), (int) ((Math.pow(tam, 2)+ 3 * tam - 4) / 2), duration));
 
         copia.copiaArq(arqRand.getFile());
         copia.setComparacoes(0);
@@ -396,7 +396,7 @@ public class Principal {
         copia.binary_insertion_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(),  tam * (Math.log(tam) - Math.log(Math.E) + 0.5), copia.getMovimentacoes(), (Math.pow(tam, 2) + 9 * tam - 10) / 4 , duration));
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (int) (tam * (Math.log(tam) - Math.log(Math.E) + 0.5)), copia.getMovimentacoes(), (int) ((Math.pow(tam, 2) + 9 * tam - 10) / 4) , duration));
         tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     }
 
@@ -428,7 +428,7 @@ public class Principal {
         copia.selection_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (tam*tam-tam)/2, copia.getMovimentacoes(), tam * (Math.log(tam) + 0.577216) , duration));
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (tam*tam-tam)/2, copia.getMovimentacoes(), (int) (tam * (Math.log(tam) + 0.577216)) , duration));
         tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     }
 
@@ -440,7 +440,7 @@ public class Principal {
         copia.bubble_sort();
         tempoFinal = System.currentTimeMillis();
         long duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("| %-22s |  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", "Bubble Sort", copia.getComparacoes(), (Math.pow(tam, 2)- tam) / 2, copia.getMovimentacoes(), 0, duration));
+        tabela.writeBytes(String.format("| %-22s |  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", "Bubble Sort", copia.getComparacoes(),(int) ((Math.pow(tam, 2)- tam) / 2), copia.getMovimentacoes(), 0, duration));
 
         copia.copiaArq(arqRev.getFile());
         copia.setComparacoes(0);
@@ -450,7 +450,7 @@ public class Principal {
         tempoFinal = System.currentTimeMillis();
 
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", copia.getComparacoes(), (Math.pow(tam, 2)- tam) / 2, copia.getMovimentacoes(), 3 * (tam * tam - tam) / 4, duration));
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", copia.getComparacoes(), (int) ((Math.pow(tam, 2)- tam) / 2), copia.getMovimentacoes(), 3 * (tam * tam - tam) / 4, duration));
 
         copia.copiaArq(arqRand.getFile());
         copia.setComparacoes(0);
@@ -459,7 +459,7 @@ public class Principal {
         copia.bubble_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (Math.pow(tam, 2)- tam) / 2, copia.getMovimentacoes(), 3 * (tam * tam - tam) / 2, duration));
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (int) ((Math.pow(tam, 2)- tam) / 2), copia.getMovimentacoes(), 3 * (tam * tam - tam) / 2, duration));
         tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     }
 
