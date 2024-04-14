@@ -651,6 +651,71 @@ public class Arquivo {
         }
     }
 
+    public void segundo_merge() {
+        Arquivo mergeAux = new Arquivo("mergeAux.dat");
+        merge(mergeAux, 0, filesize() -1);
+    }
+
+    private void merge(Arquivo mergeAux, int esq, int dir) {
+        int meio;
+
+        if (esq < dir) {
+            meio = (esq + dir) / 2;
+            merge(mergeAux, esq, meio);
+            merge(mergeAux, meio + 1, dir);
+            fusao2(mergeAux, esq, meio, meio + 1, dir);
+        }
+    }
+
+    private void fusao2(Arquivo mergeAux, int ini1, int fim1, int ini2, int fim2) {
+        int i = ini1, j = ini2, k = 0;
+        Registro regI = new Registro();
+        Registro regJ = new Registro();
+        Registro regAux = new Registro();
+
+        while (i <= fim1 && j <= fim2) {
+            seekArq(i);
+            regI.leDoArq(arquivo);
+            seekArq(j);
+            regJ.leDoArq(arquivo);
+
+            comparacoes++;
+            movimentacoes++;
+            if (regI.getNumero() < regJ.getNumero()) {
+                mergeAux.seekArq(k++);
+                regI.gravaNoArq(mergeAux.getFile());
+                i++;
+            } else {
+                mergeAux.seekArq(k++);
+                regJ.gravaNoArq(mergeAux.getFile());
+                j++;
+            }
+        }
+
+        while (i <= fim1) {
+            seekArq(i++);
+            regI.leDoArq(arquivo);
+            mergeAux.seekArq(k++);
+            regI.gravaNoArq(mergeAux.getFile());
+            movimentacoes++;
+        }
+        while (j <= fim2) {
+            seekArq(j++);
+            regJ.leDoArq(arquivo);
+            mergeAux.seekArq(k++);
+            regJ.gravaNoArq(mergeAux.getFile());
+            movimentacoes++;
+        }
+
+        for (i = 0; i < k; i++) {
+            mergeAux.seekArq(i);
+            regAux.leDoArq(mergeAux.getFile());
+            seekArq(i + ini1);
+            regAux.gravaNoArq(arquivo);
+            movimentacoes++;
+        }
+    }
+
 
     public void counting_sort() {
         int maior = returnMaior(), pos;
