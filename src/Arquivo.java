@@ -99,27 +99,27 @@ public class Arquivo {
         }
     }
 
-    public void geraArquivoOrdenado() {
+    public void geraArquivoOrdenado(int tam) {
         Registro reg;
-        for (int i = 0; i < 8; i++) {
+        for (int i = 0; i < tam; i++) {
             reg = new Registro(i);
             reg.gravaNoArq(arquivo);
         }
     }
 
-    public void geraArquivoDesordenado() {
+    public void geraArquivoDesordenado(int tam) {
         Registro reg;
         Random random = new Random();
-        for (int i = 0; i < 8; i++) {
-            reg = new Registro(random.nextInt(1001));
+        for (int i = 0; i < tam; i++) {
+            reg = new Registro(random.nextInt(1000));
             reg.gravaNoArq(arquivo);
         }
     }
 
-    public void geraArquivoReverso() {
+    public void geraArquivoReverso(int tam) {
         Registro reg;
         Random random = new Random();
-        for (int i = 8; i > 0; i--) {
+        for (int i = tam; i > 0; i--) {
             reg = new Registro(i);
             reg.gravaNoArq(arquivo);
         }

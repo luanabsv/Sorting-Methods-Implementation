@@ -1,7 +1,8 @@
+import java.io.IOException;
 import java.util.Random;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
        /* Random random = new Random();
         Lista lista = new Lista(null, null);
         for (int i = 0; i < 7; i++) {
@@ -20,7 +21,7 @@ public class Main {
 
        //lista.exibir();
         Principal principal = new Principal();
-        principal.geraArquivos();
-        principal.quickcpivo();
+        principal.teste();
+        //principal.quickcpivo();
     }
 }
