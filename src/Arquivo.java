@@ -751,6 +751,51 @@ public class Arquivo {
         }
     }
 
+    public void radix_sort() {
+        Arquivo ordenado = new Arquivo("ordenado.dat");
+        int maior = returnMaior(), i = 1;
+
+        while(maior / i > 0) {
+            countingModificadoRadix(i, ordenado);
+            i*=10;
+        }
+    }
+
+    public void countingModificadoRadix(int x, Arquivo ordenado) {
+        int i, xAux;
+        int[] count = new int[10];
+        Registro reg = new Registro();
+        Registro regOrdenado = new Registro();
+
+        for(i = 0; i < filesize(); i++) {
+            seekArq(i);
+            reg.leDoArq(arquivo);
+            count[(reg.getNumero()/x)%10]++;
+        }
+
+        for(i = 1; i < 10; i++)
+            count[i] += count[i-1];
+
+        for (i = filesize() - 1; i >= 0; i--) {
+            seekArq(i);
+            reg.leDoArq(arquivo);
+            xAux = count[(reg.getNumero() / x) % 10] - 1;
+            ordenado.seekArq(xAux);
+            reg.gravaNoArq(ordenado.getFile());
+            count[(reg.getNumero() / x) % 10]--;
+        }
+
+        for(i = 0; i < filesize(); i++) {
+            ordenado.seekArq(i);
+            regOrdenado.leDoArq(ordenado.getFile());
+            reg.setNumero(regOrdenado.getNumero());
+            seekArq(i);
+            reg.gravaNoArq(arquivo);
+            movimentacoes++;
+        }
+    }
+
+
     public void comb_sort() {
         int intervalo = filesize(), aux;
         Registro regI = new Registro();
