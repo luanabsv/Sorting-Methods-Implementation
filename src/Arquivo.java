@@ -856,6 +856,52 @@ public class Arquivo {
         System.out.println("Comparações: " + comparacoes);
     }
 
+    public void tim_sort() {
+        Arquivo auxFile = new Arquivo("ordenado.dat");
+        int tim = 32, meio, direita, esquerda, intervalo;
+
+        for (int i = 0; i <= filesize() - 1; i += tim)
+            tim_insertion_sort(i, Math.min((i + 31), filesize() - 1));
+
+        intervalo = tim;
+        while (intervalo <= filesize() - 1) {
+            for (esquerda = 0; esquerda <= filesize() - 1; esquerda += 2 * intervalo) {
+                meio = esquerda + intervalo - 1;
+                direita = Math.min((esquerda + 2 * intervalo - 1), filesize() - 1);
+                fusao2(auxFile, esquerda, meio, meio + 1, direita);
+            }
+            intervalo = 2 * intervalo;
+        }
+    }
+
+    public void tim_insertion_sort(int esquerda, int direita) {
+        int j;
+        Registro reg1 = new Registro();
+        Registro reg2 = new Registro();
+
+        for (int i = esquerda; i <= direita; i++) {
+            j = i;
+            seekArq(i);
+            reg1.leDoArq(arquivo);
+            seekArq(j - 1);
+            reg2.leDoArq(arquivo);
+
+            comparacoes++;
+            while (j > esquerda && reg1.getNumero() < reg2.getNumero()) {
+                seekArq(j);
+                reg2.gravaNoArq(arquivo);
+                movimentacoes++;
+                j--;
+                seekArq(j - 1);
+                reg2.leDoArq(arquivo);
+                comparacoes++;
+            }
+            seekArq(j);
+            reg1.gravaNoArq(arquivo);
+            movimentacoes++;
+        }
+    }
+
     public void executa() {
         exibirArq();
     }
