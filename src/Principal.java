@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class Principal {
-    long tempoInicio, tempoFinal, timeStartAll, tempoFinalTotal;
+    long tempoInicio, tempoFinal, timeInicio, timeFinal;
     Arquivo arqOrd, arqRev, arqRand, auxRev, auxRand, copia;
 
     int comparacoes, movimentacoes, tam = 1024;
@@ -326,6 +326,7 @@ public class Principal {
         gerarArquivos();
         createFiles();
         gravarTopo();
+        timeInicio = System.currentTimeMillis();
         runInsertionSort();
         runBinnaryInsertionSort();
         runSelectionSort();
@@ -335,6 +336,9 @@ public class Principal {
         runHeapSort();
         runQuickSPivo();
         runQuickCPivo();
+        runFirstMerge();
+        timeFinal = System.currentTimeMillis();
+        tabela.writeBytes("Tempo total: " + (timeFinal - timeInicio) / 1000);
     }
 
     private void runInsertionSort() throws IOException {
@@ -612,6 +616,78 @@ public class Principal {
         copia.setMovimentacoes(0);
         tempoInicio = System.currentTimeMillis();
         copia.quickcpivo();
+        tempoFinal = System.currentTimeMillis();
+        duration = (tempoFinal - tempoInicio) / 1000;
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    }
+
+    public void runFirstMerge() throws IOException {
+        System.out.println("Ordenado");
+        copia.copiaArq(arqOrd.getFile());
+        copia.setComparacoes(0);
+        copia.setMovimentacoes(0);
+        tempoInicio = System.currentTimeMillis();
+        copia.primeiro_merge();
+        tempoFinal = System.currentTimeMillis();
+        long duration = (tempoFinal - tempoInicio) / 1000;
+        tabela.writeBytes(String.format("| %-22s |  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", "Merge 1 Implementacao", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+
+        System.out.println("--------------------------------------------------------------------------------------");
+        System.out.println("Reverso");
+        copia.copiaArq(arqRev.getFile());
+        copia.setComparacoes(0);
+        copia.setMovimentacoes(0);
+        tempoInicio = System.currentTimeMillis();
+        copia.primeiro_merge();
+        tempoFinal = System.currentTimeMillis();
+
+        duration = (tempoFinal - tempoInicio) / 1000;
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+
+        System.out.println("--------------------------------------------------------------------------------------");
+        System.out.println("Randomico");
+        copia.copiaArq(arqRand.getFile());
+        copia.setComparacoes(0);
+        copia.setMovimentacoes(0);
+        tempoInicio = System.currentTimeMillis();
+        copia.primeiro_merge();
+        tempoFinal = System.currentTimeMillis();
+        duration = (tempoFinal - tempoInicio) / 1000;
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+    }
+
+    public void runCountingSort() throws IOException {
+        System.out.println("Ordenado");
+        copia.copiaArq(arqOrd.getFile());
+        copia.setComparacoes(0);
+        copia.setMovimentacoes(0);
+        tempoInicio = System.currentTimeMillis();
+        copia.counting_sort();
+        tempoFinal = System.currentTimeMillis();
+        long duration = (tempoFinal - tempoInicio) / 1000;
+        tabela.writeBytes(String.format("| %-22s |  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", "Counting Sort", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+
+        System.out.println("--------------------------------------------------------------------------------------");
+        System.out.println("Reverso");
+        copia.copiaArq(arqRev.getFile());
+        copia.setComparacoes(0);
+        copia.setMovimentacoes(0);
+        tempoInicio = System.currentTimeMillis();
+        copia.counting_sort();
+        tempoFinal = System.currentTimeMillis();
+
+        duration = (tempoFinal - tempoInicio) / 1000;
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+
+        System.out.println("--------------------------------------------------------------------------------------");
+        System.out.println("Randomico");
+        copia.copiaArq(arqRand.getFile());
+        copia.setComparacoes(0);
+        copia.setMovimentacoes(0);
+        tempoInicio = System.currentTimeMillis();
+        copia.counting_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
         tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
