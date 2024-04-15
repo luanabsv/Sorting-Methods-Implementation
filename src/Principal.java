@@ -16,36 +16,6 @@ public class Principal {
         auxRev = new Arquivo("copiaarqrev.dat");
 
         gerarArquivos();
-        //arqOrd.geraArquivoOrdenado();
-        System.out.println("Arquivo Randomico");
-        arqRand.geraArquivoDesordenado(tam);
-        auxRand.copiaArq(arqRand.getFile());
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        auxRand.quickcpivo();
-        auxRand.exibirArq();
-
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        System.out.println("Arquivo Reverso");
-        arqRev.geraArquivoReverso(tam);
-        arqRev.exibirArq();
-        System.out.println("-------------------------------------");
-        auxRev.copiaArq(arqRev.getFile());
-        auxRev.quickcpivo();
-        auxRev.exibirArq();
-
-
-        //auxRand.exibirArq();
-        //auxRev.exibirArq();
-        //arqOrd.geraArquivoReverso();
-        //arqOrd.exibirArq();
-        System.out.println("-------------------------------------");
-        //arqRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
     }
 
     public void createFiles() throws IOException {
@@ -55,244 +25,6 @@ public class Principal {
         arqRand.geraArquivoDesordenado(tam);
         arqRev.geraArquivoReverso(tam);
     }
-
-    public void bubble() {
-        //arqOrd.bubble_sort();
-        //arqOrd.exibirArq();
-
-        arqOrd.exibirArq();
-        arqOrd.bubble_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqOrd.exibirArq();
-    }
-
-    public void insertion() {
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRand.insertion_sort();
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqRand.exibirArq();
-     //   this.selection();
-       /* auxRev.insertion_sort();
-        auxRev.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqRev.exibirArq();*/
-
-       /* arqOrd.exibirArq();
-        System.out.println("-------------------------------------");
-        arqOrd.insertion_sort();
-        arqOrd.exibirArq();*/
-    }
-
-    public void binary_insertion_sort() {
-        /*auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRand.binary_insertion_sort();
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqRand.exibirArq();*/
-
-        /*arqOrd.exibirArq();
-        arqOrd.binary_insertion_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqOrd.exibirArq();*/
-
-        arqRev.exibirArq();
-        auxRev.binary_insertion_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRev.exibirArq();
-    }
-
-    public void selection() {
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRand.selection_sort();
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqRand.exibirArq();
-
-        /*arqOrd.exibirArq();
-        arqOrd.selection_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqOrd.exibirArq();*/
-
-        /*arqRev.exibirArq();
-        auxRev.selection_sort();
-        auxRev.exibirArq();*/
-    }
-
-    public void shake_sort() {
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRand.shake_sort();
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqRand.exibirArq();
-
-        /*arqOrd.exibirArq();
-        arqOrd.shake_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqOrd.exibirArq();*/
-
-       /* arqRev.exibirArq();
-        auxRev.shake_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRev.exibirArq();*/
-    }
-
-    public void shell_sort () {
-       /* auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRand.shell_sort();
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqRand.exibirArq();*/
-
-        /*arqOrd.exibirArq();
-        arqOrd.shell_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqOrd.exibirArq();*/
-
-        arqRev.exibirArq();
-        auxRev.shell_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRev.exibirArq();
-    }
-
-    public void heap_sort() {
-        /*auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRand.heap_sort();
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqRand.exibirArq();*/
-
-       /* arqOrd.exibirArq();
-        arqOrd.heap_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqOrd.exibirArq();*/
-
-       arqRev.exibirArq();
-        auxRev.heap_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRev.exibirArq();
-    }
-
-    public void quickspivo() {
-       /* auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRand.quickspivo();
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqRand.exibirArq();*/
-
-       /* arqOrd.exibirArq();
-        arqOrd.quickspivo();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqOrd.exibirArq();*/
-
-        arqRev.exibirArq();
-        auxRev.quickspivo();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRev.exibirArq();
-    }
-
-    public void quickcpivo() {
-        /*auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRand.quickcpivo();
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqRand.exibirArq();*/
-
-       arqOrd.exibirArq();
-        arqOrd.quickcpivo();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqOrd.exibirArq();
-
-        /*arqRev.exibirArq();
-        auxRev.quickcpivo();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRev.exibirArq();*/
-    }
-    public void comb_sort() {
-        /*auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRand.comb_sort();
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqRand.exibirArq();*/
-
-        /*arqOrd.exibirArq();
-        arqOrd.comb_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqOrd.exibirArq();*/
-
-        arqRev.exibirArq();
-        auxRev.comb_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRev.exibirArq();
-    }
-
-    public void gnome_sort() {
-        /*auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRand.gnome_sort();
-        auxRand.exibirArq();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqRand.exibirArq();*/
-
-        arqOrd.exibirArq();
-        arqOrd.gnome_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        arqOrd.exibirArq();
-
-        /*arqRev.exibirArq();
-        auxRev.gnome_sort();
-        System.out.println("-------------------------------------");
-        System.out.println("-------------------------------------");
-        auxRev.exibirArq();*/
-    }
-
 
     public void gerarArquivos() throws IOException {
         arqOrd = new Arquivo("ArquivoOrdenado.dat");
@@ -315,14 +47,17 @@ public class Principal {
     }
 
     void gravarTopo() throws IOException {
+        tabela.writeBytes("Métodos de ordenação\n");
+
         tabela.writeBytes("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-        tabela.writeBytes(String.format("%-25s%-80s%-80s%-80s%n", "| Sorting Algorithms", "| Sorted File", "| Reverse File", "| Randomic File                                                                 |"));
+        tabela.writeBytes(String.format("%-25s%-80s%-80s%-80s%n", "| Algoritmos", "| Arquivo Ordenado", "| Arquivo Reverso", "| Arquivo Randomico                                                                 |"));
         tabela.writeBytes("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-        tabela.writeBytes("|                        |  Comp.Prog. *  |  Comp.Equa. #  |  Mov.Prog. +  |  Mov Equa. -   |    Time    |  Comp.Prog. *  |  Comp.Equa. #  |  Mov.Prog. +  |  Mov Equa. -   |    Time    |  Comp.Prog. *  |  Comp.Equa. #  |  Mov.Prog. +  |  Mov Equa. -   |    Time    |\n");
+        tabela.writeBytes("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+        tabela.writeBytes("|                        |  Comp.Prog. *  |  Comp.Equa. #  |  Mov.Prog. +  |  Mov Equa. -   |    Tempo    |  Comp.Prog. *  |  Comp.Equa. #  |  Mov.Prog. +  |  Mov Equa. -   |    Tempo    |  Comp.Prog. *  |  Comp.Equa. #  |  Mov.Prog. +  |  Mov Equa. -   |    Tempo    |\n");
         tabela.writeBytes("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     }
 
-    public void teste() throws IOException {
+    public void geraTabela() throws IOException {
         gerarArquivos();
         createFiles();
         gravarTopo();
@@ -339,6 +74,7 @@ public class Principal {
         runFirstMerge();
         runSecondMerge();
         runCountingSort();
+        runBucketSort();
         runRadixSort();
         runCombSort();
         runGnomeSort();
@@ -374,9 +110,8 @@ public class Principal {
         copia.insertion_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (int) ((tam * tam + tam - 2) / 4), copia.getMovimentacoes(), (tam * tam + 9 * tam - 10 ) / 4, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), (int) ((tam * tam + tam - 2) / 4), copia.getMovimentacoes(), (tam * tam + 9 * tam - 10 ) / 4, duration));
+}
 
     private  void runBinnaryInsertionSort() throws IOException {
         copia.copiaArq(arqOrd.getFile());
@@ -406,9 +141,8 @@ public class Principal {
         copia.binary_insertion_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (int) (tam * (Math.log(tam) - Math.log(Math.E) + 0.5)), copia.getMovimentacoes(), (int) ((Math.pow(tam, 2) + 9 * tam - 10) / 4) , duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), (int) (tam * (Math.log(tam) - Math.log(Math.E) + 0.5)), copia.getMovimentacoes(), (int) ((Math.pow(tam, 2) + 9 * tam - 10) / 4) , duration));
+}
 
     private void runSelectionSort() throws  IOException {
         copia.copiaArq(arqOrd.getFile());
@@ -438,9 +172,8 @@ public class Principal {
         copia.selection_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (tam*tam-tam)/2, copia.getMovimentacoes(), (int) (tam * (Math.log(tam) + 0.577216)) , duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), (tam*tam-tam)/2, copia.getMovimentacoes(), (int) (tam * (Math.log(tam) + 0.577216)) , duration));
+}
 
     private void runBubbleSort() throws IOException {
         copia.copiaArq(arqOrd.getFile());
@@ -469,9 +202,8 @@ public class Principal {
         copia.bubble_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (int) ((Math.pow(tam, 2)- tam) / 2), copia.getMovimentacoes(), 3 * (tam * tam - tam) / 2, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), (int) ((Math.pow(tam, 2)- tam) / 2), copia.getMovimentacoes(), 3 * (tam * tam - tam) / 2, duration));
+}
 
     public void runShakeSort() throws IOException {
         copia.copiaArq(arqOrd.getFile());
@@ -500,9 +232,8 @@ public class Principal {
         copia.shake_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), (tam * tam - tam) / 2, copia.getMovimentacoes(), 3 * (tam * tam - tam) / 2, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), (tam * tam - tam) / 2, copia.getMovimentacoes(), 3 * (tam * tam - tam) / 2, duration));
+}
 
     public void runShellSort() throws IOException {
         copia.copiaArq(arqOrd.getFile());
@@ -531,9 +262,8 @@ public class Principal {
         copia.shell_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+}
 
     public void runHeapSort() throws IOException {
         copia.copiaArq(arqOrd.getFile());
@@ -562,9 +292,8 @@ public class Principal {
         copia.heap_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+}
 
     public void runQuickSPivo() throws IOException {
         copia.copiaArq(arqOrd.getFile());
@@ -593,9 +322,8 @@ public class Principal {
         copia.quickspivo();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+}
 
     public void runQuickCPivo() throws IOException {
         copia.copiaArq(arqOrd.getFile());
@@ -624,9 +352,8 @@ public class Principal {
         copia.quickcpivo();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+}
 
     public void runFirstMerge() throws IOException {
         System.out.println("Ordenado");
@@ -660,9 +387,8 @@ public class Principal {
         copia.primeiro_merge();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+}
 
     public void runSecondMerge() throws IOException {
         System.out.println("Ordenado");
@@ -699,9 +425,8 @@ public class Principal {
         copia.exibirArq();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+}
 
     public void runCountingSort() throws IOException {
         System.out.println("Ordenado");
@@ -735,9 +460,8 @@ public class Principal {
         copia.counting_sort();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+}
 
     public void runRadixSort() throws IOException {
         System.out.println("Ordenado");
@@ -774,9 +498,8 @@ public class Principal {
         copia.exibirArq();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+}
 
     public void runCombSort() throws IOException {
         System.out.println("Ordenado");
@@ -813,9 +536,8 @@ public class Principal {
         copia.exibirArq();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-    }
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+}
 
     public void runGnomeSort() throws IOException {
         System.out.println("Ordenado");
@@ -852,8 +574,7 @@ public class Principal {
         copia.exibirArq();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
-        tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
     }
 
     public void runTimSort() throws IOException {
@@ -891,8 +612,45 @@ public class Principal {
         copia.exibirArq();
         tempoFinal = System.currentTimeMillis();
         duration = (tempoFinal - tempoInicio) / 1000;
-        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
         tabela.writeBytes("-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     }
 
+    public void runBucketSort() throws IOException {
+        System.out.println("Ordenado");
+        copia.copiaArq(arqOrd.getFile());
+        copia.setComparacoes(0);
+        copia.setMovimentacoes(0);
+        tempoInicio = System.currentTimeMillis();
+        copia.bucketSort();
+        copia.exibirArq();
+        tempoFinal = System.currentTimeMillis();
+        long duration = (tempoFinal - tempoInicio) / 1000;
+        tabela.writeBytes(String.format("| %-22s |  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", "Bucket Sort", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+
+        System.out.println("--------------------------------------------------------------------------------------");
+        System.out.println("Reverso");
+        copia.copiaArq(arqRev.getFile());
+        copia.setComparacoes(0);
+        copia.setMovimentacoes(0);
+        tempoInicio = System.currentTimeMillis();
+        copia.bucketSort();
+        copia.exibirArq();
+        tempoFinal = System.currentTimeMillis();
+
+        duration = (tempoFinal - tempoInicio) / 1000;
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s ", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+
+        System.out.println("--------------------------------------------------------------------------------------");
+        System.out.println("Randomico");
+        copia.copiaArq(arqRand.getFile());
+        copia.setComparacoes(0);
+        copia.setMovimentacoes(0);
+        tempoInicio = System.currentTimeMillis();
+        copia.bucketSort();
+        copia.exibirArq();
+        tempoFinal = System.currentTimeMillis();
+        duration = (tempoFinal - tempoInicio) / 1000;
+        tabela.writeBytes(String.format("|  %-13s |  %-13s |  %-12s |  %-13s |   %-8s |\n\n", copia.getComparacoes(), -1, copia.getMovimentacoes(), -1, duration));
+    }
 }

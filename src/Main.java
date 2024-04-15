@@ -21,7 +21,7 @@ public class Main {
 
        //lista.exibir();
         Principal principal = new Principal();
-        principal.teste();
+        //principal.geraTabela();
         //principal.quickcpivo();
     }
 }

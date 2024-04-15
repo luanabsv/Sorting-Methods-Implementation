@@ -856,6 +856,47 @@ public class Arquivo {
         System.out.println("Comparações: " + comparacoes);
     }
 
+    public void bucketSort() {
+        int maior = returnMaior() + 1;
+        int numBaldes = (int) Math.sqrt(maior), pos;
+        int max = (maior - 1) / numBaldes;
+        BucketList bucketList = new BucketList();
+        Registro reg = new Registro();
+        ListToBucket listBucket;
+        Bucket bucket;
+
+        for(int i = 0; i < numBaldes; i++)
+            bucketList.inserirFinal(i);
+
+        int i=0;
+        while(i < filesize()) {
+            seekArq(i);
+            reg.leDoArq(arquivo);
+            pos = (reg.getNumero() - 1) / (max + 1);
+            listBucket = bucketList.buscaExaustiva(pos).getLista();
+            listBucket.inserirFinal(reg);
+            listBucket.insertion_sort();
+            comparacoes += listBucket.getComparacoes();
+            i++;
+        }
+
+        bucket = bucketList.getInicio();
+        NoBuket atual;
+        i = 0;
+        while(bucket != null) {
+            atual = bucket.getLista().getInicio();
+            while(atual != null) {
+                seekArq(i);
+                reg = atual.getRegistro();
+                movimentacoes++;
+                reg.gravaNoArq(arquivo);
+                atual = atual.getProximo();
+                i++;
+            }
+            bucket = bucket.getProximo();
+        }
+    }
+
     public void tim_sort() {
         Arquivo auxFile = new Arquivo("ordenado.dat");
         int tim = 32, meio, direita, esquerda, intervalo;
