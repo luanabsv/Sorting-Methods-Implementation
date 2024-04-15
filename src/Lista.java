@@ -501,4 +501,126 @@ public class Lista {
         }
     }
 
+
+    private void fusao2(Lista auxLista, int inicio1, int fim1, int inicio2, int fim2) {
+        int i = inicio1, j = inicio2, k = 0;
+
+        while (i <= fim1 && j <= fim2) {
+            if (returnNo(i).getInfo() < returnNo(j).getInfo()) {
+                auxLista.inserirFinal(returnNo(i).getInfo());
+                i++;
+                k++;
+            } else {
+                auxLista.inserirFinal(returnNo(j).getInfo());
+                j++;
+                k++;
+            }
+        }
+
+        while (i <= fim1) {
+            auxLista.inserirFinal(returnNo(i).getInfo());
+            i++;
+            k++;
+        }
+        while(j <= fim2) {
+            auxLista.inserirFinal(returnNo(j).getInfo());
+            j++;
+            k++;
+        }
+
+        for (i = 0; i < k; i++)
+            returnNo(i + inicio1).setInfo(auxLista.returnNo(i).getInfo());
+
+    }
+
+    /*private void merge(Lista auxLista, int esquerda, int direita) {
+        int meio;
+        if (esquerda < direita) {
+            meio = (esquerda + direita) / 2;
+            merge(auxLista, esquerda, meio);
+            merge(auxLista, meio + 1, direita);
+            fusao2(auxLista, esquerda, meio, meio + 1, direita);
+        }
+    }
+
+    public void merge_sort() {
+        Lista auxList = new Lista(null, null);
+        merge(auxList, 0, tl - 1);
+    }*/
+
+    public void tim_sort() {
+        Lista auxFila = new Lista(null, null);
+        int tim = 32, meio, direita, esquerda, intervalo;
+
+        for (int i = 0; i <= tl - 1; i += tim)
+            tim_insertion_sort(i, Math.min((i + 31), tl - 1));
+
+        intervalo = tim;
+        while (intervalo <= tl - 1) {
+            for (esquerda = 0; esquerda <= tl - 1; esquerda += 2 * intervalo) {
+                meio = esquerda + intervalo - 1;
+                direita = Math.min((esquerda + 2 * intervalo - 1), tl - 1);
+                fusao2(auxFila, esquerda, meio, meio + 1, direita);
+            }
+            intervalo = 2 * intervalo;
+        }
+    }
+
+    public void tim_insertion_sort(int esquerda, int direita) {
+        int j;
+
+        for (int i = esquerda; i <= direita; i++) {
+            j = i;
+
+            while (j > esquerda && returnNo(i).getInfo() < returnNo(j - 1).getInfo()) {
+                returnNo(j).setInfo(returnNo(j- 1).getInfo());
+                j--;
+            }
+            returnNo(j).setInfo(returnNo(i).getInfo());
+        }
+    }
+
+
+    public void counting_sort() {
+        int tam = tl, i;
+        int maior = returnMaior().getInfo();
+        int[] vetIndex = new int[maior];
+        No auxFila = inicio, atual;
+        Lista listAux = new Lista(null, null);
+        for(i = 0; i < maior; i++)
+            vetIndex[i] = 0;
+
+        while(auxFila != null) {
+            vetIndex[auxFila.getInfo()-1]++;
+            auxFila = auxFila.getProximo();
+        }
+
+        for(i = 1; i < maior; i++)
+            vetIndex[i] += vetIndex[i-1];
+
+        for(i = 0; i <= tam; i++)
+            listAux.inserirFinal(0);
+
+        auxFila = inicio;
+        while(auxFila != null) {
+            atual = listAux.getInicio();
+            i = 0;
+            while(atual != null && i < vetIndex[auxFila.getInfo()-1]-1) {
+                i++;
+                atual = atual.getProximo();
+            }
+            vetIndex[auxFila.getInfo()-1]--;
+            atual.setInfo(auxFila.getInfo());
+            auxFila = auxFila.getProximo();
+        }
+
+        auxFila = inicio;
+        atual = listAux.getInicio();
+        while(auxFila != null && atual != null) {
+            auxFila.setInfo(atual.getInfo());
+            auxFila = auxFila.getProximo();
+            atual = atual.getProximo();
+        }
+    }
+
 }
