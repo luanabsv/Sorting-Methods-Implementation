@@ -5,7 +5,7 @@ public class Principal {
     long tempoInicio, tempoFinal, timeInicio, timeFinal;
     Arquivo arqOrd, arqRev, arqRand, auxRev, auxRand, copia;
 
-    int comparacoes, movimentacoes, tam = 1024;
+    int tam = 1024;
     RandomAccessFile tabela;
 
     public void geraArquivos() throws IOException {
@@ -52,7 +52,6 @@ public class Principal {
         tabela.writeBytes("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         tabela.writeBytes(String.format("%-25s%-80s%-80s%-80s%n", "| Algoritmos", "| Arquivo Ordenado", "| Arquivo Reverso", "| Arquivo Randomico                                                                 |"));
         tabela.writeBytes("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
-        tabela.writeBytes("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
         tabela.writeBytes("|                        |  Comp.Prog. *  |  Comp.Equa. #  |  Mov.Prog. +  |  Mov Equa. -   |    Tempo    |  Comp.Prog. *  |  Comp.Equa. #  |  Mov.Prog. +  |  Mov Equa. -   |    Tempo    |  Comp.Prog. *  |  Comp.Equa. #  |  Mov.Prog. +  |  Mov Equa. -   |    Tempo    |\n");
         tabela.writeBytes("--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n");
     }
@@ -80,7 +79,7 @@ public class Principal {
         runGnomeSort();
         runTimSort();
         timeFinal = System.currentTimeMillis();
-        tabela.writeBytes("Tempo total: " + (timeFinal - timeInicio) / 1000);
+        tabela.writeBytes("Tempo total: " + (timeFinal - timeInicio) / 1000 + "segundos");
     }
 
     private void runInsertionSort() throws IOException {

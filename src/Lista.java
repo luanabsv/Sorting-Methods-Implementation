@@ -1,6 +1,6 @@
 public class Lista {
     private No inicio;
-    private  No fim;
+    private No fim;
 
     private int tl = 0;
 
@@ -66,22 +66,21 @@ public class Lista {
         return atual;
     }
 
-   private int buscaBinaria(int info, int tlFim) {
-       int inicio = 0, fim = tlFim - 1, meio = fim / 2;
+    private int buscaBinaria(int info, int tlFim) {
+        int inicio = 0, fim = tlFim - 1, meio = fim / 2;
 
-       while (inicio < fim && returnNo(meio).getInfo() != info) {
+        while (inicio < fim && returnNo(meio).getInfo() != info) {
+            if (info > returnNo(meio).getInfo())
+                inicio = meio + 1;
+            else
+                fim = meio - 1;
+
+            meio = (inicio + fim) / 2;
+        }
         if (info > returnNo(meio).getInfo())
-               inicio = meio + 1;
-           else
-               fim = meio - 1;
-
-           meio = (inicio + fim) / 2;
-       }
-       if (info > returnNo(meio).getInfo())
-           return meio + 1;
-       return meio;
+            return meio + 1;
+        return meio;
     }
-
 
 
     public void remover(int info) {
@@ -90,15 +89,13 @@ public class Lista {
         if (remover != null) {
             if (inicio == fim)
                 inicio = fim = null;
-            else if(inicio == remover) {
+            else if (inicio == remover) {
                 inicio = inicio.getProximo();
                 inicio.setAnterior(null);
-            }
-            else if(fim == remover) {
+            } else if (fim == remover) {
                 fim = fim.getAnterior();
                 fim.setAnterior(null);
-            }
-            else {
+            } else {
                 No anterior = remover.getAnterior(), proximo = remover.getProximo();
 
                 anterior.setProximo(proximo);
@@ -119,11 +116,21 @@ public class Lista {
         return i;
     }
 
+    public No returnMaior(){
+        No maior = inicio;
+
+        for(int i = 0; i < tl; i++)
+            if(returnNo(i).getInfo() > maior.getInfo())
+                maior = returnNo(i);
+
+        return maior;
+    }
+
     public No returnNo(int pos) {
         No atual = inicio;
         int i = 0;
 
-        while(atual != null && i < pos) {
+        while (atual != null && i < pos) {
             i++;
             atual = atual.getProximo();
         }
@@ -135,11 +142,11 @@ public class Lista {
         int aux;
         No atual = inicio.getProximo(), pos;
 
-        while(atual != null) {
+        while (atual != null) {
             pos = atual;
             aux = atual.getInfo();
 
-            while(pos != inicio && pos.getAnterior().getInfo() > aux) {
+            while (pos != inicio && pos.getAnterior().getInfo() > aux) {
                 pos.setInfo(pos.getAnterior().getInfo());
                 pos = pos.getAnterior();
             }
@@ -165,7 +172,7 @@ public class Lista {
         }
     }
 
-    public void selection_sort () {
+    public void selection_sort() {
         No atual = inicio, j, menorNo;
         int aux;
 
@@ -173,7 +180,7 @@ public class Lista {
             menorNo = atual;
             j = atual;
 
-            while (j != null ) {
+            while (j != null) {
                 if (j.getInfo() < menorNo.getInfo())
                     menorNo = j;
 
@@ -216,11 +223,11 @@ public class Lista {
         int aux;
         boolean troca = true;
 
-        while(auxInicio != auxFim && troca) {
+        while (auxInicio != auxFim && troca) {
             troca = false;
 
             auxIn = auxInicio;
-            while(auxIn != auxFim) {
+            while (auxIn != auxFim) {
                 if (auxIn.getInfo() > auxIn.getProximo().getInfo()) {
                     troca = true;
                     aux = auxIn.getInfo();
@@ -237,7 +244,7 @@ public class Lista {
                 troca = false;
 
                 auxIn = auxFim;
-                while(auxIn != auxInicio) {
+                while (auxIn != auxInicio) {
                     if (auxIn.getInfo() < auxIn.getAnterior().getInfo()) {
                         troca = true;
                         aux = auxIn.getInfo();
@@ -269,7 +276,7 @@ public class Lista {
                 No noJ = returnNo(j);
                 No noJDist = returnNo(j - dist);
 
-                while (j - dist >= 0 && aux < returnNo(j-dist).getInfo()) {
+                while (j - dist >= 0 && aux < returnNo(j - dist).getInfo()) {
                     noJ.setInfo(noJDist.getInfo());
                     j = j - dist;
 
@@ -287,7 +294,7 @@ public class Lista {
         No auxFim, fe, fd, maiorF, pai;
         int posPai, posFe, aux, tl2 = tl;
 
-        while(tl2 > 1) {
+        while (tl2 > 1) {
             posPai = tl2 / 2 - 1;
 
             while (posPai >= 0) {
@@ -298,7 +305,7 @@ public class Lista {
                 fd = returnNo(posFe + 1);
 
                 maiorF = fe;
-                if (posFe + 1 < tl2 &&  fd.getInfo() > fe.getInfo()) {
+                if (posFe + 1 < tl2 && fd.getInfo() > fe.getInfo()) {
                     maiorF = fd;
                 }
 
@@ -320,8 +327,8 @@ public class Lista {
 
     }
 
-    public void quickcpivo(){
-        quickcp(0, tl-1);
+    public void quickcpivo() {
+        quickcp(0, tl - 1);
     }
 
     private void quickcp(int ini, int auxFim) {
@@ -331,13 +338,13 @@ public class Lista {
         No noI = returnNo(i);
         No noJ = returnNo(j);
 
-        while(i < j) {
+        while (i < j) {
             while (noI.getInfo() < pivo.getInfo()) {
                 i++;
                 noI = noI.getProximo();
             }
 
-            while(noJ.getInfo() > pivo.getInfo()) {
+            while (noJ.getInfo() > pivo.getInfo()) {
                 j--;
                 noJ = noJ.getAnterior();
             }
@@ -360,7 +367,7 @@ public class Lista {
     }
 
     public void quickspivo() {
-        quicksp(0, tl-1);
+        quicksp(0, tl - 1);
     }
 
     private void quicksp(int ini, int auxFim) {
@@ -423,9 +430,9 @@ public class Lista {
 
         while (atual != null) {
             if (anterior.getInfo() > atual.getInfo()) {
-                auxAtual =  atual;
+                auxAtual = atual;
 
-                while(anterior != null && anterior.getInfo() > atual.getInfo()) {
+                while (anterior != null && anterior.getInfo() > atual.getInfo()) {
                     aux = atual.getInfo();
                     atual.setInfo(anterior.getInfo());
                     anterior.setInfo(aux);
@@ -440,4 +447,58 @@ public class Lista {
             atual = atual.getProximo();
         }
     }
+
+    public void radix_sort()
+    {
+        int maior = returnMaior().getInfo();
+        for(int i=1; maior/i > 0; i*=10)
+            countingToradix(i);
+    }
+
+    public void countingToradix(int casa)
+    {
+        int pos, j, i;
+        int[] vet = new int[10];
+        No aux = inicio, noInicio, noFim;
+        Lista listAux = new Lista(null, null);
+
+        for(i=  0; i <= tl; i++)
+            listAux.inserirFinal(0);
+
+        for(i = 0; i < tl; i++) {
+            vet[(aux.getInfo()/casa)%10]+=1;
+            aux = aux.getProximo();
+        }
+
+        for(i = 1; i < 10; i++)
+            vet[i] += vet[i-1];
+
+        noFim = fim;
+        i = tl;
+        while(i > 0)
+        {
+            pos = vet[(noFim.getInfo() / casa) % 10]-1;
+            j = 0;
+            aux = listAux.getInicio();
+            while(aux != null && j < pos) {
+                aux = aux.getProximo();
+                j++;
+            }
+
+            aux.setInfo(noFim.getInfo());
+            vet[(noFim.getInfo()/casa)%10]-=1;
+            noFim = noFim.getAnterior();
+            i--;
+        }
+
+        noInicio = inicio;
+        aux = listAux.getInicio();
+        while (noInicio != null && aux != null)
+        {
+            noInicio.setInfo(aux.getInfo());
+            noInicio = noInicio.getProximo();
+            aux = aux.getProximo();
+        }
+    }
+
 }
